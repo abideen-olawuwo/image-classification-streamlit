@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
-#import tensorflow as tf
+import tensorflow as tf
 
 from PIL import Image
  
@@ -14,9 +14,9 @@ def main():
         image = Image.open(file)
         st.image(image, use_column_width=True)
 
-        resized_image = image.resize((32, 32))
+        resized_image = image.resize((224, 224))
         img_array = np.array(resized_image) / 255
-        img_array = img_array.reshape(1, 32, 32, 3)
+        img_array = img_array.reshape(1, 224, 224, 3)
 
         model = tf.keras.models.load_model('full-image-classification.h5')
 
